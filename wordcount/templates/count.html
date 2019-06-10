@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<body>
+
+    <div class="content" style="margin-left: 5%; margin-right: 5%">
+    <br>
+   
+    <button type="button" class="btn btn-dark">
+        <a href="{% url 'home' %}"> 다시하기 </a>
+    </button>
+
+    <br>
+    <br>
+    <h1>당신이 입력한 텍스트는 총 "{{ total }} 개"의 단어로 구성되어 있습니다.</h1>
+    <br>
+    <h3>입력한 텍스트: </h3>
+    <div class="fulltext" style="color: grey; text-align: left;">
+        <p>
+            {{ fulltext }}
+        </p>
+    </div>
+<br>
+    <h3>단어별 빈도:</h3>
+    <br>
+
+{% for word, countTotal in dictionary %}
+    <table class="table" style="item-align: left; table-layout: fixed;">
+    <tbody style="margin-right: 5%;">
+        <tr>
+            <td>{{ word }}</td>
+            <td>{{ countTotal }}</td>
+        </tr>     
+    </tbody>
+</table>
+
+    {% endfor %}
+
+
+</body>
+
+{% endblock content %}
+
+</html>
